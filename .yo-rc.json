@@ -1,0 +1,7 @@
+{
+  "generator-phaser": {
+    "projectName": "topdownshooter",
+    "esVersion": 6,
+    "gameFolder": "game"
+  }
+}
