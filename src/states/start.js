@@ -13,7 +13,27 @@ class Start extends Phaser.State {
 
   //Setup code, method called after preload
   create() {
+
+
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    
+        this.game.world.setBounds(0, 0, 1000, 500);
+    
+        
+    
+        this.player = this.game.add.sprite(this.game.world.randomX, 200, 'this.player');
+    
+        this.game.physics.arcade.enable(this.player);
+    
+        this.game.camera.follow(this.player);
+    
+        this.cursors = this.game.input.keyboard.createCursorKeys();
+
+
+
+
+
+
     this.map = this.game.add.tilemap('map');
     this.map.addTilesetImage('tilesheet', 'tiles');
     this.layer = this.map.createLayer('background');
@@ -28,7 +48,26 @@ class Start extends Phaser.State {
 
   //Code ran on each frame of game
   update() {
+    this.player.body.velocity.x = 0;
+    this.player.body.velocity.y = 0;
 
+    if (this.cursors.left.isDown)
+    {
+        this.player.body.velocity.x = -240;
+    }
+    else if (this.cursors.right.isDown)
+    {
+        this.player.body.velocity.x = 240;
+    }
+
+    if (this.cursors.up.isDown)
+    {
+        this.player.body.velocity.y = -240;
+    }
+    else if (this.cursors.down.isDown)
+    {
+        this.player.body.velocity.y = 240;
+    }
   }
 
   //Called when game is paused

@@ -1,4 +1,26 @@
-class Boot extends Phaser.State {
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  class Boot extends Phaser.State {
 
   constructor() {
     super();
