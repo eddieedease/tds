@@ -17,13 +17,25 @@ class Start extends Phaser.State {
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     
-        this.game.world.setBounds(0, 0, 1000, 500);
+    this.game.world.resize(1600, 480);
     
-        
+        this.map = this.game.add.tilemap('map');
+        this.map.addTilesetImage('tilesheet', 'tiles');
+        this.layer = this.map.createLayer('background');
     
-        this.player = this.game.add.sprite(this.game.world.randomX, 200, 'this.player');
+        this.layer.renderSettings.enableScrollDelta = true;
+        this.layer.scale.set(1, 1); //Double the scale
+    
+        this.layer2 = this.map.createLayer('top');
+        this.layer2.renderSettings.enableScrollDelta = true;
+        this.layer2.scale.set(1, 1); //Double the scale
+    
+        this.player = this.game.add.sprite(this.game.world.randomX, 200, 'player');
+
+      
     
         this.game.physics.arcade.enable(this.player);
+        this.player.body.collideWorldBounds = true;
     
         this.game.camera.follow(this.player);
     
@@ -34,16 +46,7 @@ class Start extends Phaser.State {
 
 
 
-    this.map = this.game.add.tilemap('map');
-    this.map.addTilesetImage('tilesheet', 'tiles');
-    this.layer = this.map.createLayer('background');
-
-    this.layer.renderSettings.enableScrollDelta = true;
-    this.layer.scale.set(1, 1); //Double the scale
-
-    this.layer2 = this.map.createLayer('top');
-    this.layer2.renderSettings.enableScrollDelta = true;
-    this.layer2.scale.set(1, 1); //Double the scale
+    
   }
 
   //Code ran on each frame of game
