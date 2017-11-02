@@ -17,7 +17,7 @@ class Start extends Phaser.State {
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     
-    this.game.world.resize(1600, 480);
+    this.game.world.resize(1400, 500);
     
         this.map = this.game.add.tilemap('map');
         this.map.addTilesetImage('tilesheet', 'tiles');
@@ -30,7 +30,26 @@ class Start extends Phaser.State {
         this.layer2.renderSettings.enableScrollDelta = true;
         this.layer2.scale.set(1, 1); //Double the scale
     
-        this.player = this.game.add.sprite(this.game.world.randomX, 200, 'player');
+        //this.player = this.game.add.sprite(this.game.world.randomX, 200, 'player');
+
+
+        this.player = this.game.add.sprite(40, 100, 'char');
+
+        this.player.animations.add('left', [9, 10, 11, 12, 13, 14, 15, 16, 17]);
+        // this.player.animations.play('left', 20, true);
+        this.player.animations.add('right', [27, 28, 29, 30, 31, 32, 33, 34, 35]);
+        // this.player.animations.play('right', 20, true);
+        this.player.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+        // this.player.animations.play('up', 20, true);
+        this.player.animations.add('down', [18, 19, 20, 21, 22, 23, 24, 25, 26]);
+        // this.player.animations.play('down', 20, true);
+        this.player.animations.add('idle', [18]);
+
+        // scale the player
+        this.player.scale.setTo(0.7, 0.7);
+        this.player.anchor.x -= 0.5;
+        this.player.anchor.y -= 0.5;
+
 
       
     
@@ -56,20 +75,24 @@ class Start extends Phaser.State {
 
     if (this.cursors.left.isDown)
     {
-        this.player.body.velocity.x = -240;
+        this.player.body.velocity.x = -130;
+        this.player.animations.play('left', 20, true);
     }
     else if (this.cursors.right.isDown)
     {
-        this.player.body.velocity.x = 240;
-    }
-
-    if (this.cursors.up.isDown)
+        this.player.body.velocity.x = 130;
+        this.player.animations.play('right', 20, true);
+    } else if (this.cursors.up.isDown)
     {
-        this.player.body.velocity.y = -240;
+        this.player.body.velocity.y = -130;
+        this.player.animations.play('up', 20, true);
     }
     else if (this.cursors.down.isDown)
     {
-        this.player.body.velocity.y = 240;
+        this.player.body.velocity.y = 130;
+        this.player.animations.play('down', 20, true);
+    } else {
+        this.player.animations.play('idle', 20, true);
     }
   }
 
