@@ -1,6 +1,9 @@
 //Documentation for Phaser's (2.6.2) states:: phaser.io/docs/2.6.2/Phaser.State.html
 class Start extends Phaser.State {
 
+    
+    
+
     //initialization code in the constructor
     constructor(game, parent) {
         super(game, parent);
@@ -21,7 +24,9 @@ class Start extends Phaser.State {
 
         this.map = this.game.add.tilemap('map');
         this.map.addTilesetImage('tilesheet', 'tiles');
-        this.map.setCollision(1,100);
+
+         // tile collisions   [strange block]
+        
         
         this.layer = this.map.createLayer('background');
 
@@ -36,18 +41,22 @@ class Start extends Phaser.State {
         this.layer3.renderSettings.enableScrollDelta = true;
         this.layer3.visible = false;
         this.layer3.scale.set(1, 1); //Double the scale
+        
 
         this.collayer = this.map.createLayer('collision');
         this.collayer.renderSettings.enableScrollDelta = true;
         this.collayer.scale.set(1, 1); //Double the scale
         this.collayer.visible = false;
+        
         this.layer.resizeWorld();
         //this.layer2.scale.set(zoomlevel);
-
-        // tile collisions   [strange block]
         this.map.setCollision(109, true, this.collayer);
-        // callbackfunction
-        this.map.setTileIndexCallback(543, this.hitCoin, this);
+        this.map.setTileIndexCallback(543, this.showRoof, this, this.collayer)
+
+        this.map.setTileIndexCallback(544, this.hideRoof, this, this.collayer)
+        
+        
+       
         
 
         
@@ -91,13 +100,7 @@ class Start extends Phaser.State {
 
     }
 
-    hitCoin(sprite, tile) {
-        
-            console.log('comes here');
-        
-            return true;
-        
-        }
+    
 
   
 
@@ -142,6 +145,17 @@ class Start extends Phaser.State {
     shutdown() {
 
     }
+
+    showRoof(string) {
+        this.layer3.visible = true;
+        console.log(this);
+            return true;
+        }
+
+        hideRoof(string) {
+            this.layer3.visible = false;
+            return true;
+        }
 
 }
 
