@@ -22,6 +22,8 @@ class Preloader extends Phaser.State {
     this.game.load.image('text_go', 'assets/text_go.png');
     this.game.load.image('text_ready', 'assets/text_ready.png');
 
+    this.game.load.image('zombi', 'assets/zombi.png');
+
     this.game.load.spritesheet('char', 'assets/char.png', 64, 64);
 
     this.game.load.spritesheet('target', 'assets/target.png',128.66,128);

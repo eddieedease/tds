@@ -1,8 +1,8 @@
 //Documentation for Phaser's (2.6.2) states:: phaser.io/docs/2.6.2/Phaser.State.html
 class Start extends Phaser.State {
 
-    
-    
+
+
 
     //initialization code in the constructor
     constructor(game, parent) {
@@ -28,9 +28,9 @@ class Start extends Phaser.State {
         this.map = this.game.add.tilemap('map');
         this.map.addTilesetImage('tilesheet', 'tiles');
 
-         // tile collisions   [strange block]
-        
-        
+        // tile collisions   [strange block]
+
+
         this.layer = this.map.createLayer('background');
 
         this.layer.renderSettings.enableScrollDelta = true;
@@ -44,27 +44,34 @@ class Start extends Phaser.State {
         this.layer3.renderSettings.enableScrollDelta = true;
         this.layer3.visible = true;
         this.layer3.setScale(1.6);
-        
+
 
         this.collayer = this.map.createLayer('collision');
         this.collayer.renderSettings.enableScrollDelta = true;
-        this.collayer.scale.set(1,1); //Double the scale
+        this.collayer.scale.set(1, 1); //Double the scale
         this.collayer.visible = false;
         this.collayer.setScale(1.6);
+
+        //  Here we create our coins group
+        this.peepz = this.game.add.group();
         
+        this.peepz.enableBody = true;
+        this.map.createFromTiles(268, null, "zombi", this.collayer, this.peepz); 
+        
+
         //this.layer.resizeWorld();
         //this.layer2.scale.set(zoomlevel);
         this.map.setCollision(109, true, this.collayer);
         this.map.setTileIndexCallback(543, this.showRoof, this, this.collayer)
 
         this.map.setTileIndexCallback(544, this.hideRoof, this, this.collayer)
-        
-        
-       
-        
 
-        
-        
+
+
+
+
+
+
 
         //this.player = this.game.add.sprite(this.game.world.randomX, 200, 'player');
 
@@ -77,17 +84,17 @@ class Start extends Phaser.State {
         // this.player.animations.play('right', 20, true);
         this.player.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8]);
         // this.player.animations.play('up', 20, true);
-        this.player.animations.add('down', [18, 19, 20, 21, 21,13, 24, 25, 26]);
+        this.player.animations.add('down', [18, 19, 20, 21, 22, 23, 24, 25, 26]);
         // this.player.animations.play('down', 20, true);
         this.player.animations.add('idle', [18]);
 
         // scale the player
-        this.player.scale.setTo(0.7,0.7);
-        
+        this.player.scale.setTo(0.7, 0.7);
+
         this.player.anchor.x -= 0.5;
         this.player.anchor.y -= 0.5;
-       
-        
+
+
 
 
 
@@ -109,9 +116,9 @@ class Start extends Phaser.State {
 
     }
 
-    
 
-  
+
+
 
     //Code ran on each frame of game
     update() {
@@ -143,11 +150,11 @@ class Start extends Phaser.State {
 
     //You're able to do any final post-processing style effects here.
     render() {
-     
-            
-               // this.game.debug.body(this.player);
-            
-            
+
+
+        // this.game.debug.body(this.player);
+
+
     }
 
     //Called when switching to a new state
@@ -157,14 +164,14 @@ class Start extends Phaser.State {
 
     showRoof(string) {
         this.layer3.visible = true;
-        console.log(this);
-            return true;
-        }
+        // console.log(this);
+        return true;
+    }
 
-        hideRoof(string) {
-            this.layer3.visible = false;
-            return true;
-        }
+    hideRoof(string) {
+        this.layer3.visible = false;
+        return true;
+    }
 
 }
 
