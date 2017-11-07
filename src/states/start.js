@@ -17,10 +17,13 @@ class Start extends Phaser.State {
     //Setup code, method called after preload
     create() {
 
+        this.stageGroup = this.game.add.group();
 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.game.world.resize(1400, 500);
+        //this.game.world.resize(1400, 500);
+
+
 
         this.map = this.game.add.tilemap('map');
         this.map.addTilesetImage('tilesheet', 'tiles');
@@ -31,24 +34,25 @@ class Start extends Phaser.State {
         this.layer = this.map.createLayer('background');
 
         this.layer.renderSettings.enableScrollDelta = true;
-        this.layer.scale.set(1, 1); //Double the scale
+        this.layer.setScale(1.6);
 
         this.layer2 = this.map.createLayer('top');
         this.layer2.renderSettings.enableScrollDelta = true;
-        this.layer2.scale.set(1, 1); //Double the scale
+        this.layer2.setScale(1.6);
 
         this.layer3 = this.map.createLayer('roof');
         this.layer3.renderSettings.enableScrollDelta = true;
-        this.layer3.visible = false;
-        this.layer3.scale.set(1, 1); //Double the scale
+        this.layer3.visible = true;
+        this.layer3.setScale(1.6);
         
 
         this.collayer = this.map.createLayer('collision');
         this.collayer.renderSettings.enableScrollDelta = true;
-        this.collayer.scale.set(1, 1); //Double the scale
+        this.collayer.scale.set(1,1); //Double the scale
         this.collayer.visible = false;
+        this.collayer.setScale(1.6);
         
-        this.layer.resizeWorld();
+        //this.layer.resizeWorld();
         //this.layer2.scale.set(zoomlevel);
         this.map.setCollision(109, true, this.collayer);
         this.map.setTileIndexCallback(543, this.showRoof, this, this.collayer)
@@ -65,7 +69,7 @@ class Start extends Phaser.State {
         //this.player = this.game.add.sprite(this.game.world.randomX, 200, 'player');
 
 
-        this.player = this.game.add.sprite(40, 100, 'char');
+        this.player = this.game.add.sprite(20, 100, 'char');
 
         this.player.animations.add('left', [9, 10, 11, 12, 13, 14, 15, 16, 17]);
         // this.player.animations.play('left', 20, true);
@@ -73,25 +77,30 @@ class Start extends Phaser.State {
         // this.player.animations.play('right', 20, true);
         this.player.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8]);
         // this.player.animations.play('up', 20, true);
-        this.player.animations.add('down', [18, 19, 20, 21, 22, 23, 24, 25, 26]);
+        this.player.animations.add('down', [18, 19, 20, 21, 21,13, 24, 25, 26]);
         // this.player.animations.play('down', 20, true);
         this.player.animations.add('idle', [18]);
 
         // scale the player
-        this.player.scale.setTo(0.2, 0.2);
+        this.player.scale.setTo(0.7,0.7);
+        
         this.player.anchor.x -= 0.5;
         this.player.anchor.y -= 0.5;
-
+       
+        
 
 
 
         this.game.physics.arcade.enable(this.player);
+        this.player.body.setSize(20, 20, 24, 40);
         this.player.body.collideWorldBounds = true;
 
         this.game.camera.follow(this.player);
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
+        //this.map.scale.set(3,3);
+        this.layer.resizeWorld();
 
 
 
@@ -136,7 +145,7 @@ class Start extends Phaser.State {
     render() {
      
             
-                this.game.debug.body(this.player);
+               // this.game.debug.body(this.player);
             
             
     }
