@@ -7,7 +7,7 @@ import Preloader from './states/preloader';
 import Start from './states/start';
 
 
-const game = new Phaser.Game(400, 300, Phaser.AUTO, 'topdownshooter-game');
+const game = new Phaser.Game(500, 275, Phaser.AUTO, 'topdownshooter-game');
 
 game.state.add('begin', new Begin());
 game.state.add('boot', new Boot());

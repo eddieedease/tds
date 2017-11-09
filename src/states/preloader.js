@@ -31,8 +31,10 @@ class Preloader extends Phaser.State {
     this.game.load.audio('gunshot','assets/gunshot.wav');
     this.game.load.audio('ding','assets/ding.wav');
 
+      // notice tiles en car spritesheet gets loaded as image
     this.game.load.tilemap('map', 'assets/level2.json', null, Phaser.Tilemap.TILED_JSON);
     this.game.load.image('tiles', 'assets/tilesheet.png');
+   
   }
 
   onLoadComplete() {

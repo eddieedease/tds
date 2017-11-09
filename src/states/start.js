@@ -27,6 +27,7 @@ class Start extends Phaser.State {
 
         this.map = this.game.add.tilemap('map');
         this.map.addTilesetImage('tilesheet', 'tiles');
+        
 
         // tile collisions   [strange block]
 
@@ -35,10 +36,12 @@ class Start extends Phaser.State {
 
         this.layer.renderSettings.enableScrollDelta = true;
         this.layer.setScale(1.6);
+        
 
         this.layer2 = this.map.createLayer('top');
         this.layer2.renderSettings.enableScrollDelta = true;
         this.layer2.setScale(1.6);
+        
 
         this.layer3 = this.map.createLayer('roof');
         this.layer3.renderSettings.enableScrollDelta = true;
@@ -109,7 +112,9 @@ class Start extends Phaser.State {
         //this.map.scale.set(3,3);
         this.layer.resizeWorld();
 
-
+        this.layer.alpha = 0.5;
+        this.layer2.alpha = 0.8;
+        this.layer3.alpha = 0.95;
 
 
 
@@ -170,6 +175,7 @@ class Start extends Phaser.State {
 
     hideRoof(string) {
         this.layer3.visible = false;
+       
         return true;
     }
 
