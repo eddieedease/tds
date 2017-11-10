@@ -112,9 +112,9 @@ class Start extends Phaser.State {
         //this.map.scale.set(3,3);
         this.layer.resizeWorld();
 
-        this.layer.alpha = 0.5;
-        this.layer2.alpha = 0.8;
-        this.layer3.alpha = 0.95;
+        //this.layer.alpha = 0.5;
+        // this.layer2.alpha = 0.8;
+        // this.layer3.alpha = 0.95;
 
 
 
