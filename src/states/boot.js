@@ -13,6 +13,7 @@ class Boot extends Phaser.State {
      //setup device scaling
     if (this.game.device.desktop) {
       this.game.scale.pageAlignHorizontally = true;
+      //this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
       this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
 
