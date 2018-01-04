@@ -1,10 +1,63 @@
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-}
+
 canvas {
   display: block;
   cursor: none;
+}
+
+
+
+
+body {
+  background: lightblue;
+}
+
+
+.article {
+ width: 10%;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  
+  padding: 10px;
+}
+
+.monitor {
+  width:515px;
+  height: 300px;
+  overflow-y:hidden;
+  border: solid 1em #333;
+  border-radius:.5em;
+}
+.monitor::-webkit-scrollbar {
+      width: 15px;
+}
+.monitor::-webkit-scrollbar-thumb {
+  background: #666;
+}
+::-webkit-scrollbar-track {
+      background-color: #888;
+}
+.stand:before {
+  content:"";
+  display:block;
+  position:relative;
+  background: #222;
+  width: 150px;
+  height: 50px;
+  top:382px;
+  left:185px;
+}
+.stand:after {
+   content:"";
+   display:block;
+   position:relative;
+   background:#333;
+   border-top-left-radius:.5em;
+   border-top-right-radius:.5em;
+   width: 300px;
+   height: 15px;
+   top: 50px;
+   left: 110px;
 }
