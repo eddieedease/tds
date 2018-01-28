@@ -4,12 +4,18 @@ canvas {
   cursor: none;
 }
 
-
+.content {
+  max-width: 60%;
+  margin: auto;
+  cursor: none;
+}
 
 
 body {
   background: lightblue;
 }
+
+* {}
 
 
 .article {
